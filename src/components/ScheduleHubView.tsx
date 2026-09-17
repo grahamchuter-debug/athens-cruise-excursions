@@ -13,6 +13,12 @@ import {
   SCHEDULE_YEARS,
   yearPath,
 } from "@/lib/schedule";
+import {
+  FUTURE_2028_SCHEDULE_NOTE,
+  PARTIAL_YEAR_SCHEDULE_NOTE,
+  PUBLISH_2028,
+  SCHEDULE_COVERAGE_NOTE,
+} from "@/data/schedule-wording";
 
 export function ScheduleHubView() {
   const entries = getScheduleEntries();
@@ -45,6 +51,16 @@ export function ScheduleHubView() {
           </p>
         </div>
       )}
+
+      <div className="mb-8 rounded-xl border border-slate-200 bg-slate-50 p-5 text-sm text-slate-700 space-y-2">
+        <p>{PARTIAL_YEAR_SCHEDULE_NOTE}</p>
+        <p>{SCHEDULE_COVERAGE_NOTE}</p>
+        {PUBLISH_2028 && FUTURE_2028_SCHEDULE_NOTE ? <p>{FUTURE_2028_SCHEDULE_NOTE}</p> : null}
+        <p>
+          Schedule port is Piraeus — Athens is the destination marketing name. Times are indicative; berth is
+          shown only when confirmed. Always confirm with your cruise line.
+        </p>
+      </div>
 
       <section className="mb-12 grid gap-4 sm:grid-cols-2">
         <div>

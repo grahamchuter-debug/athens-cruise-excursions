@@ -3,6 +3,8 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { excursions } from "@/lib/excursions";
+import { getScheduleEntries, getEntriesForDate } from "@/lib/schedule";
+import type { ScheduleEntry } from "@/data/types";
 
 type Hours = "4" | "5" | "6" | "8" | "10";
 type Mobility = "full" | "some" | "limited";
@@ -14,11 +16,10 @@ type PlannerMeta = {
   slug: string;
   minHours: number;
   interests: Interest[];
-  mobilityOk: Mobility[]; // mobility levels this suits
-  familyStrength: number; // 0-2
+  mobilityOk: Mobility[];
+  familyStrength: number;
 };
 
-// Planner metadata layered over the excursion content model.
 const meta: PlannerMeta[] = [
   {
     slug: "acropolis-parthenon-shore-excursion",
@@ -84,12 +85,84 @@ const confidenceRank: Record<string, number> = {
   Tight: 1,
 };
 
+function realTime(value: string | undefined): string {
+  const v = (value || "").trim();
+  if (!v || v === "00:00" || v === "0:00") return "";
+  return v;
+}
+
+function hoursFromTimes(arrival: string, departure: string): Hours | null {
+  if (!arrival || !departure) return null;
+  const [ah, am] = arrival.split(":").map(Number);
+  const [dh, dm] = departure.split(":").map(Number);
+  let minutes = dh * 60 + dm - (ah * 60 + am);
+  if (minutes < 0) minutes += 24 * 60;
+  const usable = Math.max(0, minutes / 60 - 1.5);
+  if (usable >= 10) return "10";
+  if (usable >= 8) return "8";
+  if (usable >= 6) return "6";
+  if (usable >= 5) return "5";
+  if (usable >= 4) return "4";
+  return "4";
+}
+
 export function CruisePlanner() {
+  const schedule = useMemo(() => getScheduleEntries(), []);
+  const dates = useMemo(() => [...new Set(schedule.map((e) => e.date))].sort(), [schedule]);
+
+  const [callDate, setCallDate] = useState("");
+  const [shipName, setShipName] = useState("");
   const [hours, setHours] = useState<Hours | "">("");
+  const [hoursFromSchedule, setHoursFromSchedule] = useState(false);
   const [mobility, setMobility] = useState<Mobility>("full");
   const [interest, setInterest] = useState<Interest>("mixed");
   const [group, setGroup] = useState<GroupType>("couple");
   const [confidence, setConfidence] = useState<Confidence>("balanced");
+
+  const shipsOnDate: ScheduleEntry[] = useMemo(() => {
+    if (!callDate) return [];
+    return getEntriesForDate(schedule, callDate);
+  }, [schedule, callDate]);
+
+  function applyShip(date: string, ship: string) {
+    setCallDate(date);
+    setShipName(ship);
+    const matches = getEntriesForDate(schedule, date).filter((e) => e.ship === ship);
+    if (matches.length === 1) {
+      const a = realTime(matches[0].arrival);
+      const d = realTime(matches[0].departure);
+      const derived = hoursFromTimes(a, d);
+      if (derived) {
+        setHours(derived);
+        setHoursFromSchedule(true);
+      } else {
+        setHours("");
+        setHoursFromSchedule(false);
+      }
+    } else {
+      setHours("");
+      setHoursFromSchedule(false);
+    }
+  }
+
+  function onDateChange(date: string) {
+    setCallDate(date);
+    setShipName("");
+    setHours("");
+    setHoursFromSchedule(false);
+    const matches = date ? getEntriesForDate(schedule, date) : [];
+    if (matches.length === 1) applyShip(date, matches[0].ship);
+  }
+
+  function onShipChange(ship: string) {
+    if (!callDate || !ship) {
+      setShipName("");
+      setHours("");
+      setHoursFromSchedule(false);
+      return;
+    }
+    applyShip(callDate, ship);
+  }
 
   const results = useMemo(() => {
     if (hours === "") return [];
@@ -103,8 +176,7 @@ export function CruisePlanner() {
         let score = 0;
         const reasons: string[] = [];
 
-        // Time in port
-        if (h < m.minHours) return null; // not realistic
+        if (h < m.minHours) return null;
         if (h >= m.minHours + 2) {
           score += 2;
         } else {
@@ -112,7 +184,6 @@ export function CruisePlanner() {
           reasons.push("Fits, but keep an eye on the clock");
         }
 
-        // Mobility
         if (!m.mobilityOk.includes(mobility)) {
           if (mobility === "limited") return null;
           score -= 1;
@@ -121,23 +192,19 @@ export function CruisePlanner() {
           score += 1;
         }
 
-        // Interests
         if (interest === "mixed" || m.interests.includes(interest)) {
           score += 2;
         }
 
-        // Group type
         if (group === "family") score += m.familyStrength;
         if (group === "solo" && m.slug.includes("food")) score += 1;
 
-        // Return confidence preference
         const conf = confidenceRank[excursion.returnConfidence] ?? 2;
         if (confidence === "relaxed") score += (conf - 2) * 2;
         if (confidence === "balanced") score += conf - 2;
-        if (confidence === "maximise") score += 0;
 
         if (confidence === "relaxed" && excursion.returnConfidence === "Tight") {
-          return null; // filter out risky options for cautious travellers
+          return null;
         }
 
         return { excursion, score, reasons };
@@ -152,18 +219,64 @@ export function CruisePlanner() {
 
   const selectClass =
     "mt-2 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm";
+  const noMatch = Boolean(callDate) && shipsOnDate.length === 0;
 
   return (
     <div className="space-y-8">
       <div className="rounded-xl border border-slate-200 bg-white p-6">
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <label className="block">
+            <span className="text-sm font-medium text-slate-700">Port call date (Piraeus)</span>
+            <input
+              type="date"
+              value={callDate}
+              onChange={(e) => onDateChange(e.target.value)}
+              list="piraeus-call-dates"
+              className={selectClass}
+            />
+            <datalist id="piraeus-call-dates">
+              {dates.map((d) => (
+                <option key={d} value={d} />
+              ))}
+            </datalist>
+          </label>
+
+          <label className="block">
+            <span className="text-sm font-medium text-slate-700">Ship</span>
+            <select
+              value={shipName}
+              onChange={(e) => onShipChange(e.target.value)}
+              disabled={!callDate || shipsOnDate.length === 0}
+              className={`${selectClass} disabled:bg-slate-50`}
+            >
+              <option value="">
+                {!callDate
+                  ? "Choose a date first"
+                  : shipsOnDate.length === 0
+                    ? "No published match — set hours manually"
+                    : shipsOnDate.length === 1
+                      ? shipsOnDate[0].ship
+                      : "Choose your ship"}
+              </option>
+              {shipsOnDate.map((e) => (
+                <option key={`${e.date}-${e.ship}`} value={e.ship}>
+                  {e.ship} ({e.cruiseLine})
+                </option>
+              ))}
+            </select>
+          </label>
+
+          <label className="block">
             <span className="text-sm font-medium text-slate-700">
               Hours ashore at Piraeus
+              {hoursFromSchedule ? " (from published times)" : ""}
             </span>
             <select
               value={hours}
-              onChange={(e) => setHours(e.target.value as Hours | "")}
+              onChange={(e) => {
+                setHours(e.target.value as Hours | "");
+                setHoursFromSchedule(false);
+              }}
               className={selectClass}
             >
               <option value="">Select port time…</option>
@@ -234,6 +347,14 @@ export function CruisePlanner() {
             </select>
           </label>
         </div>
+
+        {(noMatch || (shipName && !hoursFromSchedule && hours === "")) && (
+          <p className="mt-4 rounded-lg bg-amber-50 p-3 text-sm text-amber-800">
+            {noMatch
+              ? "No published Piraeus call for that date — choose hours ashore manually."
+              : "Published arrival/departure are incomplete for this call — set hours ashore manually or confirm with your cruise line."}
+          </p>
+        )}
 
         {hours === "4" && (
           <p className="mt-4 rounded-lg bg-amber-50 p-3 text-sm text-amber-800">

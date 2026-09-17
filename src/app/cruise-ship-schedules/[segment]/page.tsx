@@ -24,6 +24,12 @@ import {
   SCHEDULE_YEARS,
   yearPath,
 } from "@/lib/schedule";
+import {
+  FUTURE_2028_SCHEDULE_NOTE,
+  PARTIAL_YEAR_SCHEDULE_NOTE,
+  PUBLISH_2028,
+  SCHEDULE_COVERAGE_NOTE,
+} from "@/data/schedule-wording";
 
 export function generateStaticParams() {
   const params: { segment: string }[] = [];
@@ -105,6 +111,17 @@ export default async function ScheduleSegmentPage({
           />
 
           <div className="mt-10 space-y-8">
+            {entries.length > 0 && (
+              <div className="rounded-xl border border-slate-200 bg-slate-50 p-5 text-sm text-slate-700 space-y-2">
+                <p>{PARTIAL_YEAR_SCHEDULE_NOTE}</p>
+                {year === 2026 ? <p>{SCHEDULE_COVERAGE_NOTE}</p> : null}
+                {year === 2028 && PUBLISH_2028 && FUTURE_2028_SCHEDULE_NOTE ? (
+                  <p>{FUTURE_2028_SCHEDULE_NOTE}</p>
+                ) : null}
+                <p>Schedule port is Piraeus — Athens is destination marketing only.</p>
+              </div>
+            )}
+
             {entries.length === 0 && (
               <div className="rounded-xl border border-amber-200 bg-amber-50 p-6">
                 <p className="font-medium text-amber-950">Schedule data coming soon</p>

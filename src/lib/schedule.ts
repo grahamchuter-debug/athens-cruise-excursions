@@ -1,7 +1,7 @@
 import type { ScheduleEntry } from "@/data/types";
 import importedSchedule from "@/data/imported-schedules/athens.json";
 
-export const SCHEDULE_YEARS = [2026, 2027] as const;
+export const SCHEDULE_YEARS = [2026, 2027, 2028] as const;
 export type ScheduleYear = (typeof SCHEDULE_YEARS)[number];
 
 export const SCHEDULE_BASE_PATH = "/cruise-ship-schedules";
@@ -87,7 +87,9 @@ export function parseMonthSlug(value: string): string | null {
   const [, monthName, yearStr] = match;
   const monthIndex = MONTH_SLUGS.indexOf(monthName as MonthSlug);
   if (monthIndex === -1) return null;
-  return getMonthKey(Number(yearStr), monthIndex + 1);
+  const year = Number(yearStr);
+  if (!isValidScheduleYear(year)) return null;
+  return getMonthKey(year, monthIndex + 1);
 }
 
 export function yearPath(year: ScheduleYear | number): string {
@@ -121,4 +123,8 @@ export function getVerifiedMonthKeys(): string[] {
 
 export function getUniqueCruiseLines(entries: ScheduleEntry[] = allEntries): string[] {
   return [...new Set(entries.map((e) => e.cruiseLine))].sort();
+}
+
+export function getEntriesForDate(entries: ScheduleEntry[], date: string): ScheduleEntry[] {
+  return entries.filter((e) => e.date === date);
 }

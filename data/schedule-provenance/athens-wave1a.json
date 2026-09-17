@@ -1,0 +1,49 @@
+{
+  "generatedAt": "2026-09-17T21:09:16.929Z",
+  "wave": "wave-1a",
+  "port": "athens",
+  "displayName": "Piraeus (Athens)",
+  "portIdentityNote": "Schedule port is Piraeus — Athens is marketing destination only",
+  "minPublishRows": 15,
+  "counts": {
+    "2026": 275,
+    "2027": 474,
+    "2028_discovery": 232,
+    "2028_published": 38,
+    "public_total": 787
+  },
+  "partial2026": true,
+  "filter2028": {
+    "decision": "PUBLISH",
+    "reason": "validated 38 >= MIN_PUBLISH_ROWS 15 — publish validated only; held 194 restricted/unvalidated",
+    "validatedCount": 38
+  },
+  "timeCompleteness": {
+    "2026": {
+      "total": 275,
+      "arrival": 213,
+      "departure": 189,
+      "both": 171,
+      "neither": 44,
+      "pctBoth": 62.2
+    },
+    "2027": {
+      "total": 474,
+      "arrival": 360,
+      "departure": 323,
+      "both": 295,
+      "neither": 86,
+      "pctBoth": 62.2
+    },
+    "2028": {
+      "total": 38,
+      "arrival": 37,
+      "departure": 22,
+      "both": 21,
+      "neither": 0,
+      "pctBoth": 55.3
+    }
+  },
+  "berthPolicy": "unknown — no generic terminals",
+  "placeholderPurged": true
+}
