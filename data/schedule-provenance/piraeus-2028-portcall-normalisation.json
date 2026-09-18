@@ -1,0 +1,692 @@
+{
+  "generatedAt": "2026-09-18T14:29:59.349Z",
+  "rawOlpShipDays": 957,
+  "uniqueActiveDates": 321,
+  "normalisedPortVisits": 820,
+  "multiDayStaysCollapsed": 106,
+  "shipDayRowsCollapsedIntoMultiDayVisits": 243,
+  "singleDayCalls": 714,
+  "overnightVisits": 106,
+  "longestStay": {
+    "ship": "Viking Yidun",
+    "date": "2028-01-03",
+    "shipDays": 3,
+    "nights": 2,
+    "stayEndDate": "2028-01-05"
+  },
+  "correctlySplitAdjacentReturns": 0,
+  "monthlyPortCallCounts": {
+    "10": 114,
+    "11": 45,
+    "12": 18,
+    "01": 16,
+    "02": 18,
+    "03": 29,
+    "04": 57,
+    "05": 93,
+    "06": 105,
+    "07": 114,
+    "08": 99,
+    "09": 112
+  },
+  "timeCompleteness": {
+    "total": 820,
+    "arrival": 791,
+    "departure": 786,
+    "both": 784,
+    "neither": 27,
+    "pctBoth": 95.6
+  },
+  "berthCompleteness": {
+    "total": 820,
+    "withBerth": 503,
+    "pct": 61.3
+  },
+  "qa40": {
+    "singleDaySampled": 20,
+    "multiDaySampled": 20,
+    "passed": 40,
+    "total": 40,
+    "rows": [
+      {
+        "date": "2028-01-02",
+        "ship": "Celestyal Journey",
+        "stayNights": 0,
+        "shipDaysCollapsed": 1,
+        "arrival": "",
+        "departure": "12:00",
+        "berth": "3",
+        "olpDays": [
+          "2028-01-02"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-01-03",
+        "ship": "MSC Orchestra",
+        "stayNights": 0,
+        "shipDaysCollapsed": 1,
+        "arrival": "07:00",
+        "departure": "17:00",
+        "berth": "8",
+        "olpDays": [
+          "2028-01-03"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-01-05",
+        "ship": "Le Laperouse",
+        "stayNights": 0,
+        "shipDaysCollapsed": 1,
+        "arrival": "07:00",
+        "departure": "19:00",
+        "berth": "5",
+        "olpDays": [
+          "2028-01-05"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-01-10",
+        "ship": "MSC Orchestra",
+        "stayNights": 0,
+        "shipDaysCollapsed": 1,
+        "arrival": "07:00",
+        "departure": "17:00",
+        "berth": "8",
+        "olpDays": [
+          "2028-01-10"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-01-16",
+        "ship": "Astoria Grande",
+        "stayNights": 0,
+        "shipDaysCollapsed": 1,
+        "arrival": "10:00",
+        "departure": "",
+        "berth": "34",
+        "olpDays": [
+          "2028-01-16"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-01-17",
+        "ship": "MSC Orchestra",
+        "stayNights": 0,
+        "shipDaysCollapsed": 1,
+        "arrival": "07:00",
+        "departure": "17:00",
+        "berth": "8",
+        "olpDays": [
+          "2028-01-17"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-01-24",
+        "ship": "MSC Orchestra",
+        "stayNights": 0,
+        "shipDaysCollapsed": 1,
+        "arrival": "07:00",
+        "departure": "17:00",
+        "berth": "8",
+        "olpDays": [
+          "2028-01-24"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-01-26",
+        "ship": "Nieuw Statendam",
+        "stayNights": 0,
+        "shipDaysCollapsed": 1,
+        "arrival": "08:00",
+        "departure": "17:00",
+        "berth": "18",
+        "olpDays": [
+          "2028-01-26"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-01-29",
+        "ship": "Spirit of Discovery",
+        "stayNights": 0,
+        "shipDaysCollapsed": 1,
+        "arrival": "08:00",
+        "departure": "22:00",
+        "berth": "71",
+        "olpDays": [
+          "2028-01-29"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-01-31",
+        "ship": "MSC Orchestra",
+        "stayNights": 0,
+        "shipDaysCollapsed": 1,
+        "arrival": "07:00",
+        "departure": "17:00",
+        "berth": "8",
+        "olpDays": [
+          "2028-01-31"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-01-31",
+        "ship": "Viking Yidun 1",
+        "stayNights": 0,
+        "shipDaysCollapsed": 1,
+        "arrival": "",
+        "departure": "",
+        "berth": "2",
+        "olpDays": [
+          "2028-01-31"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-02-05",
+        "ship": "Nieuw Statendam",
+        "stayNights": 0,
+        "shipDaysCollapsed": 1,
+        "arrival": "07:00",
+        "departure": "16:00",
+        "berth": "18",
+        "olpDays": [
+          "2028-02-05"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-02-07",
+        "ship": "MSC Orchestra",
+        "stayNights": 0,
+        "shipDaysCollapsed": 1,
+        "arrival": "07:00",
+        "departure": "17:00",
+        "berth": "8",
+        "olpDays": [
+          "2028-02-07"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-02-12",
+        "ship": "Nieuw Statendam",
+        "stayNights": 0,
+        "shipDaysCollapsed": 1,
+        "arrival": "07:00",
+        "departure": "16:00",
+        "berth": "18",
+        "olpDays": [
+          "2028-02-12"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-02-14",
+        "ship": "MSC Orchestra",
+        "stayNights": 0,
+        "shipDaysCollapsed": 1,
+        "arrival": "07:00",
+        "departure": "17:00",
+        "berth": "8",
+        "olpDays": [
+          "2028-02-14"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-02-14",
+        "ship": "World Explorer",
+        "stayNights": 0,
+        "shipDaysCollapsed": 1,
+        "arrival": "00:01",
+        "departure": "17:00",
+        "berth": null,
+        "olpDays": [
+          "2028-02-14"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-02-15",
+        "ship": "Allura",
+        "stayNights": 0,
+        "shipDaysCollapsed": 1,
+        "arrival": "04:30",
+        "departure": "17:00",
+        "berth": "1",
+        "olpDays": [
+          "2028-02-15"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-02-15",
+        "ship": "Azamara Journey",
+        "stayNights": 0,
+        "shipDaysCollapsed": 1,
+        "arrival": "09:00",
+        "departure": "18:00",
+        "berth": null,
+        "olpDays": [
+          "2028-02-15"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-02-21",
+        "ship": "MSC Orchestra",
+        "stayNights": 0,
+        "shipDaysCollapsed": 1,
+        "arrival": "07:00",
+        "departure": "17:00",
+        "berth": "8",
+        "olpDays": [
+          "2028-02-21"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-02-22",
+        "ship": "Allura",
+        "stayNights": 0,
+        "shipDaysCollapsed": 1,
+        "arrival": "07:00",
+        "departure": "18:00",
+        "berth": "1",
+        "olpDays": [
+          "2028-02-22"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-01-03",
+        "ship": "Viking Yidun",
+        "stayNights": 2,
+        "shipDaysCollapsed": 3,
+        "arrival": "",
+        "departure": "",
+        "berth": "2",
+        "olpDays": [
+          "2028-01-03",
+          "2028-01-04",
+          "2028-01-05"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-01-05",
+        "ship": "Viking Saturn",
+        "stayNights": 2,
+        "shipDaysCollapsed": 3,
+        "arrival": "07:00",
+        "departure": "17:30",
+        "berth": "36",
+        "olpDays": [
+          "2028-01-05",
+          "2028-01-06",
+          "2028-01-07"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-01-11",
+        "ship": "Viking Mira",
+        "stayNights": 2,
+        "shipDaysCollapsed": 3,
+        "arrival": "07:00",
+        "departure": "17:30",
+        "berth": null,
+        "olpDays": [
+          "2028-01-11",
+          "2028-01-12",
+          "2028-01-13"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-01-17",
+        "ship": "Viking Vela",
+        "stayNights": 2,
+        "shipDaysCollapsed": 3,
+        "arrival": "07:00",
+        "departure": "18:00",
+        "berth": null,
+        "olpDays": [
+          "2028-01-17",
+          "2028-01-18",
+          "2028-01-19"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-01-31",
+        "ship": "Viking Vela",
+        "stayNights": 2,
+        "shipDaysCollapsed": 3,
+        "arrival": "07:00",
+        "departure": "17:30",
+        "berth": null,
+        "olpDays": [
+          "2028-01-31",
+          "2028-02-01",
+          "2028-02-02"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-02-01",
+        "ship": "Viking Yidun",
+        "stayNights": 1,
+        "shipDaysCollapsed": 2,
+        "arrival": "",
+        "departure": "",
+        "berth": "2",
+        "olpDays": [
+          "2028-02-01",
+          "2028-02-02"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-02-02",
+        "ship": "Viking Libra",
+        "stayNights": 2,
+        "shipDaysCollapsed": 3,
+        "arrival": "07:00",
+        "departure": "17:30",
+        "berth": null,
+        "olpDays": [
+          "2028-02-02",
+          "2028-02-03",
+          "2028-02-04"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-02-06",
+        "ship": "Azamara Journey",
+        "stayNights": 1,
+        "shipDaysCollapsed": 2,
+        "arrival": "09:00",
+        "departure": "17:00",
+        "berth": null,
+        "olpDays": [
+          "2028-02-06",
+          "2028-02-07"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-02-20",
+        "ship": "Viking Star",
+        "stayNights": 2,
+        "shipDaysCollapsed": 3,
+        "arrival": "08:00",
+        "departure": "17:00",
+        "berth": null,
+        "olpDays": [
+          "2028-02-20",
+          "2028-02-21",
+          "2028-02-22"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-02-23",
+        "ship": "Viking Mira",
+        "stayNights": 2,
+        "shipDaysCollapsed": 3,
+        "arrival": "07:00",
+        "departure": "18:00",
+        "berth": null,
+        "olpDays": [
+          "2028-02-23",
+          "2028-02-24",
+          "2028-02-25"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-02-25",
+        "ship": "Azamara Journey",
+        "stayNights": 1,
+        "shipDaysCollapsed": 2,
+        "arrival": "13:00",
+        "departure": "18:00",
+        "berth": null,
+        "olpDays": [
+          "2028-02-25",
+          "2028-02-26"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-02-28",
+        "ship": "Viking Yidun",
+        "stayNights": 2,
+        "shipDaysCollapsed": 3,
+        "arrival": "",
+        "departure": "",
+        "berth": "2",
+        "olpDays": [
+          "2028-02-28",
+          "2028-02-29",
+          "2028-03-01"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-03-02",
+        "ship": "Viking Star",
+        "stayNights": 1,
+        "shipDaysCollapsed": 2,
+        "arrival": "03:00",
+        "departure": "18:00",
+        "berth": null,
+        "olpDays": [
+          "2028-03-02",
+          "2028-03-03"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-03-03",
+        "ship": "Celestyal Journey",
+        "stayNights": 1,
+        "shipDaysCollapsed": 2,
+        "arrival": "07:00",
+        "departure": "17:00",
+        "berth": "3",
+        "olpDays": [
+          "2028-03-03",
+          "2028-03-04"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-03-04",
+        "ship": "Nieuw Statendam",
+        "stayNights": 1,
+        "shipDaysCollapsed": 2,
+        "arrival": "07:00",
+        "departure": "18:00",
+        "berth": "18",
+        "olpDays": [
+          "2028-03-04",
+          "2028-03-05"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-03-07",
+        "ship": "Britannia",
+        "stayNights": 1,
+        "shipDaysCollapsed": 2,
+        "arrival": "05:30",
+        "departure": "19:00",
+        "berth": null,
+        "olpDays": [
+          "2028-03-07",
+          "2028-03-08"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-03-08",
+        "ship": "Viking Mira",
+        "stayNights": 1,
+        "shipDaysCollapsed": 2,
+        "arrival": "07:00",
+        "departure": "18:00",
+        "berth": null,
+        "olpDays": [
+          "2028-03-08",
+          "2028-03-09"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-03-10",
+        "ship": "Celestyal Journey",
+        "stayNights": 1,
+        "shipDaysCollapsed": 2,
+        "arrival": "05:00",
+        "departure": "17:00",
+        "berth": "3",
+        "olpDays": [
+          "2028-03-10",
+          "2028-03-11"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-03-18",
+        "ship": "Viking Saturn",
+        "stayNights": 1,
+        "shipDaysCollapsed": 2,
+        "arrival": "07:00",
+        "departure": "18:00",
+        "berth": "36",
+        "olpDays": [
+          "2028-03-18",
+          "2028-03-19"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      },
+      {
+        "date": "2028-03-28",
+        "ship": "Viking Mars",
+        "stayNights": 1,
+        "shipDaysCollapsed": 2,
+        "arrival": "05:30",
+        "departure": "18:00",
+        "berth": null,
+        "olpDays": [
+          "2028-03-28",
+          "2028-03-29"
+        ],
+        "arrOk": true,
+        "depOk": true,
+        "pass": true
+      }
+    ]
+  },
+  "finalPublicCount": 820,
+  "previousPublicShipDays": 957,
+  "rawPreservedAt": "data/ship-schedules/official-port/piraeus-2028/olp-2028-parsed-calls.json",
+  "normalisedArtifact": "data/ship-schedules/official-port/piraeus-2028/olp-2028-normalised-port-visits.json",
+  "buildDeploy": {
+    "athensWorker": "athens-cruise-excursions",
+    "liveUrl": "https://athenscruiseexcursions.com/cruise-ship-schedules/2028/",
+    "liveHttp": 200,
+    "genoaTouched": false
+  }
+}
