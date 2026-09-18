@@ -1,12 +1,12 @@
-/** Wave 1A schedule disclaimers — customer-facing only. */
+/** Wave 1A / 1E schedule disclaimers — customer-facing only. */
 
 export const PARTIAL_YEAR_SCHEDULE_NOTE =
   "The currently published schedule covers verified calls available to us and will be updated as additional port information is confirmed.";
 
 export const FUTURE_2028_SCHEDULE_NOTE =
-  "This 2028 cruise schedule is based on currently published cruise itineraries and is updated as schedules change. Always check your cruise line for your final sailing details.";
+  "This 2028 Piraeus cruise schedule is taken from the official Piraeus Port Authority (OLP) cruise berthing schedule. Athens is the excursion destination; the schedule port is Piraeus. Times and berth codes are as published by OLP and can change — confirm with your cruise line.";
 
 export const SCHEDULE_COVERAGE_NOTE =
-  "Verified calls currently available begin July 2026. Earlier 2026 dates will be added as they are confirmed. 2028 listings are a validated subset of published cruise itineraries.";
+  "Verified calls currently available begin July 2026. Earlier 2026 dates will be added as they are confirmed. 2028 listings are the official OLP Piraeus cruise schedule.";
 export const PUBLISH_2028 = true;
 export const PARTIAL_2026 = true;

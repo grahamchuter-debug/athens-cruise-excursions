@@ -12,4 +12,10 @@ export interface ScheduleEntry {
   timeInPort?: string;
   passengers?: string;
   notes?: string;
+  /** Official OLP berth / allocation code when published — do not invent terminal names. */
+  berth?: string;
+  provenance?: string;
+  schedulePort?: string;
+  timeProvenance?: string;
+  berthProvenance?: string;
 }

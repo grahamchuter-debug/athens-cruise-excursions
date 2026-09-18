@@ -20,6 +20,7 @@ export function ScheduleTable({
       </div>
     );
   }
+  const showBerth = entries.some((e) => Boolean(e.berth));
   return (
     <div className="overflow-x-auto rounded-xl border border-slate-200 shadow-sm">
       <table className="min-w-full divide-y divide-slate-200">
@@ -31,6 +32,9 @@ export function ScheduleTable({
             <th className="px-4 py-3 text-left text-sm font-semibold">Arrival</th>
             <th className="px-4 py-3 text-left text-sm font-semibold">Departure</th>
             <th className="px-4 py-3 text-left text-sm font-semibold">Time in Port</th>
+            {showBerth ? (
+              <th className="px-4 py-3 text-left text-sm font-semibold">Berth</th>
+            ) : null}
           </tr>
         </thead>
         <tbody className="divide-y divide-slate-100 bg-white">
@@ -53,6 +57,9 @@ export function ScheduleTable({
               <td className="px-4 py-3 text-sm text-slate-600">{entry.arrival || "—"}</td>
               <td className="px-4 py-3 text-sm text-slate-600">{entry.departure || "—"}</td>
               <td className="px-4 py-3 text-sm text-slate-600">{entry.timeInPort ?? "—"}</td>
+              {showBerth ? (
+                <td className="px-4 py-3 text-sm text-slate-600">{entry.berth || "—"}</td>
+              ) : null}
             </tr>
           ))}
         </tbody>
