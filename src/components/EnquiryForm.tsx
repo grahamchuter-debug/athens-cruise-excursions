@@ -1,34 +1,23 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { Suspense, useState } from "react";
+import { Suspense } from "react";
+import { EnquiryFormShell } from "@/components/EnquiryFormShell";
 import { excursions } from "@/lib/excursions";
 
 function EnquiryFormInner() {
   const searchParams = useSearchParams();
   const preselected = searchParams.get("excursion") ?? "";
-  const [submitted, setSubmitted] = useState(false);
-
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setSubmitted(true);
-  }
-
-  if (submitted) {
-    return (
-      <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-8 text-center">
-        <h2 className="text-xl font-semibold text-emerald-900">Enquiry received</h2>
-        <p className="mt-2 text-emerald-800">
-          Thank you — we&apos;ll respond with Athens shore excursion options from
-          Piraeus, matched to your ship schedule. Connect your preferred email
-          handler in production.
-        </p>
-      </div>
-    );
-  }
-
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <EnquiryFormShell
+      siteId="athens"
+      fallbackEmail="hello@athenscruiseexcursions.com"
+      className="space-y-5"
+      submitClassName="rounded-full bg-blue-800 px-6 py-3 text-sm font-semibold text-white hover:bg-blue-900"
+      submitLabel="Send enquiry"
+      successTitle="Enquiry received"
+      successBody="Thank you — we'll respond with Athens shore excursion options from Piraeus, matched to your ship schedule."
+    >
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="block">
           <span className="text-sm font-medium text-slate-700">Full name</span>
@@ -63,7 +52,7 @@ function EnquiryFormInner() {
           <span className="text-sm font-medium text-slate-700">Port date at Piraeus</span>
           <input
             type="date"
-            name="portDate"
+            name="travelDate"
             className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"
           />
         </label>
@@ -72,7 +61,7 @@ function EnquiryFormInner() {
         <label className="block">
           <span className="text-sm font-medium text-slate-700">Hours in port</span>
           <select
-            name="hours"
+            name="hours_in_port"
             className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"
           >
             <option value="">Select…</option>
@@ -86,7 +75,7 @@ function EnquiryFormInner() {
         <label className="block">
           <span className="text-sm font-medium text-slate-700">Excursion interest</span>
           <select
-            name="excursion"
+            name="productRef"
             defaultValue={preselected}
             className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"
           >
@@ -103,18 +92,14 @@ function EnquiryFormInner() {
         <span className="text-sm font-medium text-slate-700">Message</span>
         <textarea
           name="message"
+          required
+          maxLength={5000}
           rows={4}
           className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"
           placeholder="Group size, mobility needs, all-aboard time, interests (Acropolis, museum, Plaka, Cape Sounion, Delphi)…"
         />
       </label>
-      <button
-        type="submit"
-        className="rounded-full bg-blue-800 px-6 py-3 text-sm font-semibold text-white hover:bg-blue-900"
-      >
-        Send enquiry
-      </button>
-    </form>
+    </EnquiryFormShell>
   );
 }
 
